@@ -1,0 +1,61 @@
+.layout{
+    height: calc(100vh - 42px);
+    margin-right: calc(var(--bs-gutter-x) * -0.5);
+    margin-left: calc(var(--bs-gutter-x) * -0.5);
+}
+
+.right-layout{
+    background-color: #0e1117;
+    color: white;
+    padding: 15px;
+    overflow-y: scroll;
+    &::-webkit-scrollbar {
+        width: 4px;
+        border-radius: 4px;
+        visibility: hidden;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        border-radius: 4px;
+        visibility: hidden;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: #888;
+        border-radius: 4px;
+        visibility: hidden;
+    }
+
+    &:hover {
+
+        &::-webkit-scrollbar,
+        &::-webkit-scrollbar-track,
+        &::-webkit-scrollbar-thumb {
+            visibility: visible;
+        }
+    }
+}
+
+::ng-deep .ant-layout,
+::ng-deep .ant-layout * {
+  box-shadow: none !important;
+}
+
+::ng-deep .ant-layout-sider-has-trigger {
+    padding: 0 !important;
+}
+
+button{
+    background: none;
+    border: none;
+}
+
+::ng-deep .ant-layout-sider-zero-width-trigger{
+    background-color: #0e1117 !important;
+    top: 6px !important;
+}
+
+// ::ng-deep .top-right-nav{
+//     left: 10px;
+// }

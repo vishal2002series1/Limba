@@ -1,0 +1,96 @@
+<div class="charts">
+    <h2>Account Growth Charts</h2>
+
+    <div *ngIf="retirementData.length > 0">
+    <h3>Retirement Accounts Growth</h3>
+    <plotly-plot 
+    [data]="retirementData" 
+    [layout]="{
+        title: {text: 'Retirement Accounts Growth Over Time', x: 0, xanchor: 'left'}, 
+        xaxis: { 
+            title: 'Years', 
+            color: textColor, 
+            titlefont: {color: textColor}, 
+            tickfont: {color: textColor}, 
+            showline: false, 
+            showgrid: false, 
+            zeroline: false, 
+            range: [0, null]}, 
+        yaxis: { 
+            title: 'Balance ($)', 
+            color: textColor, 
+            titlefont: {color: textColor}, 
+            tickfont: {color: textColor}, 
+            showline: false, 
+            showgrid: true, 
+            zeroline: false, 
+            range: [0, null]},
+        paper_bgcolor: backgroundColor,
+        plot_bgcolor: backgroundColor,
+        font: { color: textColor }
+    }"  
+    ></plotly-plot>
+    </div>
+
+    <div *ngIf="trustFundData.length > 0">
+    <h3>Trust Fund Accounts Growth</h3>
+    <plotly-plot 
+    [data]="trustFundData" 
+    [layout]="{
+        title: {text: 'Trust Fund Accounts Growth Over Time', x: 0, xanchor: 'left'}, 
+        xaxis: { 
+            title: 'Years', 
+            color: textColor, 
+            titlefont: {color: textColor}, 
+            tickfont: {color: textColor}, 
+            showline: false, 
+            showgrid: false, 
+            zeroline: false, 
+            range: [0, null]}, 
+        yaxis: { 
+            title: 'Balance ($)', 
+            color: textColor, 
+            titlefont: {color: textColor}, 
+            tickfont: {color: textColor}, 
+            showline: false, 
+            showgrid: true, 
+            zeroline: false, 
+            range: [0, null]},        
+        paper_bgcolor: backgroundColor,
+        plot_bgcolor: backgroundColor,
+        font: { color: textColor }
+    }"      
+    ></plotly-plot>
+    </div>
+
+    <div *ngIf="otherInvestmentsData.length > 0">
+    <h3>Other Investments Growth</h3>
+    <plotly-plot 
+    [data]="otherInvestmentsData" 
+    [layout]="{
+        title: {text: 'Other Investments Growth Over Time', x: 0, xanchor: 'left'}, 
+        xaxis: { 
+            title: 'Years', 
+            color: textColor, 
+            titlefont: {color: textColor}, 
+            tickfont: {color: textColor}, 
+            showline: false, 
+            showgrid: false, 
+            zeroline: false, 
+            range: [0, null]}, 
+        yaxis: { 
+            title: 'Balance ($)', 
+            color: textColor, 
+            titlefont: {color: textColor}, 
+            tickfont: {color: textColor}, 
+            showline: false, 
+            showgrid: true, 
+            zeroline: false, 
+            range: [0, null]},        
+        paper_bgcolor: backgroundColor,
+        plot_bgcolor: backgroundColor,
+        font: { color: textColor }
+    }"      
+    ></plotly-plot>
+    </div>
+</div>

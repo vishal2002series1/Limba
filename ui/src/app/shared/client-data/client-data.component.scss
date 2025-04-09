@@ -1,0 +1,24 @@
+.client-info{
+    display:flex;
+}
+
+.client{
+    margin: 5vh;
+    h1, h2, h3, h4, h5, h6{
+        color: white;
+    }
+    h2{
+        margin-bottom: 5vh;
+    }
+    .ant-divider-horizontal{
+        background-color: white;
+    }
+}
+
+.client-head{
+    height: 5vh;
+}
+
+.info-block{
+    margin-right: 2vw;
+}

@@ -1,0 +1,194 @@
+[
+    {
+        "id": 1,
+        "question": "Is the answer relevant?",
+        "selected": null,
+        "type": "Relevant",
+        "option": [
+            {
+                "key": "Yes",
+                "value": "Yes"
+            },
+            {
+                "key": "No",
+                "value": "No"
+            }
+        ],
+        "alternativeQuestion": {
+            "selected": null,
+            "question": "If no, Why is the answer not relevant? Select one option",
+            "option_Two": [
+                {
+                    "key": "Answer is not related to the context of the question",
+                    "value": "Answer is not related to the context of the question"
+                },
+                {
+                    "key": "Answer is partially relevant",
+                    "value": "Answer is partially relevant"
+                },
+                {
+                    "key": "Other-Please specify",
+                    "value": "Other-Please specify"
+                }
+            ]
+        },
+        "other": {
+            "message": null
+        }
+    },
+    {
+        "id": 2,
+        "question": "Is the answer correct?",
+        "selected": null,
+        "type": "Accuracy",
+        "option": [
+            {
+                "key": "Yes",
+                "value": "Yes"
+            },
+            {
+                "key": "No",
+                "value": "No"
+            }
+        ],
+        "alternativeQuestion": {
+            "selected": null,
+            "question": "If no, why is the answer correct? Select one option",
+            "option_Two": [
+                {
+                    "key": "Answer is false",
+                    "value": "Answer is false"
+                },
+                {
+                    "key": "Tool answered that it did not understand the question",
+                    "value": "Tool answered that it did not understand the question"
+                },
+                {
+                    "key": "Tool returned an error",
+                    "value": "Tool returned an error"
+                },
+                {
+                    "key": "Other-Please specify",
+                    "value": "Other-Please specify"
+                }
+            ]
+        },
+        "other": {
+            "message": null
+        }
+    },
+    {
+        "id": 3,
+        "question": "Is the answer complete?",
+        "selected": null,
+        "type": "Completeness",
+        "option": [
+            {
+                "key": "Yes",
+                "value": "Yes"
+            },
+            {
+                "key": "No",
+                "value": "No"
+            }
+        ],
+        "alternativeQuestion": {
+            "selected": null,
+            "question": "If no, Why is the answer not fully complete? Select one option",
+            "option_Two": [
+                {
+                    "key": "Answer is missing critical details",
+                    "value": "Answer is missing critical details"
+                },
+                {
+                    "key": "Answer is missing non-critical details",
+                    "value": "Answer is missing non-critical details"
+                },
+                {
+                    "key": "Answer is not detailed enough/is vague or non specific",
+                    "value": "Answer is not detailed enough/is vague or non specific"
+                },
+                {
+                    "key": "Tool returned \"Unable to answer the question\"",
+                    "value": "Tool returned \"Unable to answer the question\""
+                },
+                {
+                    "key": "Other-Please specify",
+                    "value": "Other-Please specify"
+                }
+            ]
+        },
+        "other": {
+            "message": null
+        }
+    },
+    {
+        "id": 4,
+        "question": "Did the bot retrive the correct article with the answer to the question",
+        "selected": null,
+        "type": "Reference",
+        "option": [
+            {
+                "key": "Yes",
+                "value": "Yes"
+            },
+            {
+                "key": "No",
+                "value": "No"
+            }
+        ]
+    },
+    {
+        "id": 5,
+        "question": "Was the document the most recent information?",
+        "selected": null,
+        "type": "Recency",
+        "option": [
+            {
+                "key": "Yes",
+                "value": "Yes"
+            },
+            {
+                "key": "No",
+                "value": "No"
+            }
+        ]
+    },
+    {
+        "id": 5,
+        "question": "Was the answer generated available in the content provided?",
+        "selected": null,
+        "type": "Hallucination",
+        "option": [
+            {
+                "key": "Yes",
+                "value": "Yes"
+            },
+            {
+                "key": "No",
+                "value": "No"
+            }
+        ],
+        "alternativeQuestion": {
+            "selected": null,
+            "question": "If no, Why is the answer not hallucinating? Select one option",
+            "option_Two": [
+                {
+                    "key": "Stand alone number",
+                    "value": "Stand alone number"
+                },
+                {
+                    "key": "Number from table",
+                    "value": "Number from table"
+                },
+                {
+                    "key": "Other-Please specify",
+                    "value": "Other-Please specify"
+                }
+            ]
+        },
+        "other": {
+            "message": null
+        }
+    }
+]

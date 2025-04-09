@@ -1,0 +1,936 @@
+{
+    "database": "IRAH_WEALTH_DB",
+    "database_description": "The IRAH Wealth Database is a relational database used to store and manage client account data, track cash transfers, and record financial orders. The database is likely used by portfolio managers, financial analysts, and other financial professionals to manage client accounts, track cash flow, and make investment decisions.",
+    "schemas": [
+        {
+            "schema": "dbo",
+            "schema_description": "The dbo schema is the default schema for the database. It is used to store the majority of the data in the database, including the data used to manage client accounts, track cash transfers, and record financial orders. This schema is likely used by portfolio managers, financial analysts, and other financial professionals to manage client accounts, track cash flow, and make investment decisions.",
+            "tables": [
+                {
+                    "table_name": "cash_transfer_data",
+                    "table_description": "The 'cash_transfer_data' table contains information about cash transfers within a firm's funds. It includes a unique 'batch_id' as the primary key, details about the portfolio manager, the firm, and the fund involved in the cash transfer. The table also tracks the date when the cash transfer was requested ('date_requested') and the date of the batch ('batch_date'). Financial figures such as 'start_of_day_cash', 'intraday_cash_transfers', 'accrued_interest', 'proforma', 'proforma_plus', and 'work_in_progress_orders' are recorded, along with an indication of whether the transaction was a 'buy' or 'sell'.",
+                    "columns": [
+                        {
+                            "column": "batch_id",
+                            "column_description": "A unique identifier for the batch of cash transfer.",
+                            "column_metadata": "VARCHAR(1000) NOT NULL, PRIMARY KEY",
+                            "column_sample_data": "AB0123"
+                        },
+                        {
+                            "column": "portfolio_manager_name",
+                            "column_description": "Name of the portfolio manager handling the cash transfer.",
+                            "column_metadata": "VARCHAR(1000)",
+                            "column_sample_data": "Jon Doe"
+                        },
+                        {
+                            "column": "firm_name",
+                            "column_description": "Name of the firm involved in the cash transfer.",
+                            "column_metadata": "VARCHAR(1000)",
+                            "column_sample_data": "Nuveen Asset Management"
+                        },
+                        {
+                            "column": "fund_name",
+                            "column_description": "Name of the fund for which the cash is being transferred.",
+                            "column_metadata": "VARCHAR(1000)",
+                            "column_sample_data": "Small Cap World Fund"
+                        },
+                        {
+                            "column": "date_requested",
+                            "column_description": "The date on which the cash transfer was requested.",
+                            "column_metadata": "DATE",
+                            "column_sample_data": "2023-10-12"
+                        },
+                        {
+                            "column": "batch_date",
+                            "column_description": "The date on which the cash transfer batch was processed.",
+                            "column_metadata": "DATE",
+                            "column_sample_data": "2023-10-12"
+                        },
+                        {
+                            "column": "start_of_day_cash",
+                            "column_description": "The amount of cash at the start of the day.",
+                            "column_metadata": "VARCHAR(1000)",
+                            "column_sample_data": "39848976.56"
+                        },
+                        {
+                            "column": "intraday_cash_transfers",
+                            "column_description": "The amount of cash transferred intraday.",
+                            "column_metadata": "VARCHAR(1000)",
+                            "column_sample_data": "876367.39"
+                        },
+                        {
+                            "column": "accrued_interest",
+                            "column_description": "The amount of accrued interest.",
+                            "column_metadata": "VARCHAR(1000)",
+                            "column_sample_data": "6108.8"
+                        },
+                        {
+                            "column": "proforma",
+                            "column_description": "Proforma cash amount before transfers.",
+                            "column_metadata": "VARCHAR(1000)",
+                            "column_sample_data": "40731452.75"
+                        },
+                        {
+                            "column": "proforma_plus",
+                            "column_description": "Proforma cash amount after transfers.",
+                            "column_metadata": "VARCHAR(1000)",
+                            "column_sample_data": "45830081.8"
+                        },
+                        {
+                            "column": "work_in_progress_orders",
+                            "column_description": "Cash amount related to work in progress orders.",
+                            "column_metadata": "VARCHAR(1000)",
+                            "column_sample_data": "5098629.05"
+                        },
+                        {
+                            "column": "buy_or_sell",
+                            "column_description": "Indicates whether the cash transfer is for a buy or sell order.",
+                            "column_metadata": "VARCHAR(1000)",
+                            "column_sample_data": ["Sell", "Buy"]
+                        }
+                    ]
+                },
+                {
+                    "table_name": "client_data",
+                    "table_description": "The client_data table contains personal and financial information about clients. It includes fields for client identification, personal details (such as name, date of birth, age, marital status, dependents, etc.), contact information, employment and income details, client relationship information (such as client since, last login, preferred contact method, etc.), asset details (such as total assets, managed assets, retirement assets, etc.), account information, and investment preferences. The primary key of the table is client_id.",
+                    "columns": [
+                        {
+                            "column": "client_id",
+                            "column_description": "A unique identifier for the client.",
+                            "column_metadata": "VARCHAR(1000) NOT NULL",
+                            "column_sample_data": "C01234"
+                        },
+                        {
+                            "column": "first_name",
+                            "column_description": "The client's first name.",
+                            "column_metadata": "VARCHAR(1000)",
+                            "column_sample_data": "Derek"
+                        },
+                        {
+                            "column": "middle_name",
+                            "column_description": "The client's middle name.",
+                            "column_metadata": "VARCHAR(1000)",
+                            "column_sample_data": "Smith"
+                        },
+                        {
+                            "column": "last_name",
+                            "column_description": "The client's last name.",
+                            "column_metadata": "VARCHAR(1000)",
+                            "column_sample_data": "Vang"
+                        },
+                        {
+                            "column": "client_name",
+                            "column_description": "The full name of the client.",
+                            "column_metadata": "VARCHAR(1000)",
+                            "column_sample_data": "Derek Vang"
+                        },
+                        {
+                            "column": "dob",
+                            "column_description": "Date of birth of the client.",
+                            "column_metadata": "DATE",
+                            "column_sample_data": "1992-05-29"
+                        },
+                        {
+                            "column": "age",
+                            "column_description": "The age of the client.",
+                            "column_metadata": "DECIMAL(38, 0)",
+                            "column_sample_data": "31"
+                        },
+                        {
+                            "column": "deceased",
+                            "column_description": "Indicates if the client is deceased.",
+                            "column_metadata": "VARCHAR(1000)",
+                            "column_sample_data": ["No", "Yes"]
+                        },
+                        {
+                            "column": "ssn",
+                            "column_description": "Social Security Number of the client.",
+                            "column_metadata": "VARCHAR(1000)",
+                            "column_sample_data": "YCI23DAX8EA"
+                        },
+                        {
+                            "column": "residential_address",
+                            "column_description": "The residential address of the client.",
+                            "column_metadata": "VARCHAR(5000)",
+                            "column_sample_data": "994-7575 Dui Ave Willowbrook CA  12345"
+                        },
+                        {
+                            "column": "mailing_address",
+                            "column_description": "The mailing address of the client.",
+                            "column_metadata": "VARCHAR(5000)",
+                            "column_sample_data": "994-7575 Dui Ave Willowbrook CA  12345"
+                        },
+                        {
+                            "column": "home_phone",
+                            "column_description": "The home phone number of the client.",
+                            "column_metadata": "VARCHAR(1000)",
+                            "column_sample_data": "(416) 626-8684"
+                        },
+                        {
+                            "column": "mobile_phone",
+                            "column_description": "The mobile phone number of the client.",
+                            "column_metadata": "VARCHAR(1000)",
+                            "column_sample_data": "1-242-603-3478"
+                        },
+                        {
+                            "column": "work_phone",
+                            "column_description": "The work phone number of the client.",
+                            "column_metadata": "VARCHAR(1000)",
+                            "column_sample_data": "1-743-852-2025"
+                        },
+                        {
+                            "column": "email",
+                            "column_description": "The email address of the client.",
+                            "column_metadata": "VARCHAR(1000)",
+                            "column_sample_data": "Derek.Vang@gmail.com"
+                        },
+                        {
+                            "column": "marital_status",
+                            "column_description": "The marital status of the client.",
+                            "column_metadata": "VARCHAR(1000)",
+                            "column_sample_data": ["Married", "Single"]
+                        },
+                        {
+                            "column": "date_last_changed_marital_status",
+                            "column_description": "The date when the marital status was last changed.",
+                            "column_metadata": "DATE",
+                            "column_sample_data": "2015-05-20"
+                        },
+                        {
+                            "column": "dependents",
+                            "column_description": "The number of dependents the client has.",
+                            "column_metadata": "VARCHAR(1000)",
+                            "column_sample_data": "3"
+                        },
+                        {
+                            "column": "date_last_changed_dependents",
+                            "column_description": "The date when the number of dependents was last changed.",
+                            "column_metadata": "DATE",
+                            "column_sample_data": "2023-06-08"
+                        },
+                        {
+                            "column": "beneficiaries",
+                            "column_description": "The beneficiaries of the client.",
+                            "column_metadata": "VARCHAR(1000)",
+                            "column_sample_data": "Anne White"
+                        },
+                        {
+                            "column": "date_last_changed_beneficiaries",
+                            "column_description": "The date when the beneficiaries were last changed.",
+                            "column_metadata": "DATE",
+                            "column_sample_data": "2017-06-08"
+                        },
+                        {
+                            "column": "authorized_users",
+                            "column_description": "The authorized users associated with the client's account.",
+                            "column_metadata": "VARCHAR(1000)",
+                            "column_sample_data": "Anne White"
+                        },
+                        {
+                            "column": "employer",
+                            "column_description": "The employer of the client.",
+                            "column_metadata": "VARCHAR(1000)",
+                            "column_sample_data": "Mauris Corp."
+                        },
+                        {
+                            "column": "date_last_changed_employer",
+                            "column_description": "The date when the client's employer information was last changed.",
+                            "column_metadata": "DATE",
+                            "column_sample_data": "2005-01-10"
+                        },
+                        {
+                            "column": "annual_income",
+                            "column_description": "The annual income of the client.",
+                            "column_metadata": "VARCHAR(1000)",
+                            "column_sample_data": "500000"
+                        },
+                        {
+                            "column": "date_last_changed_annual_income",
+                            "column_description": "The date when the client's annual income was last changed.",
+                            "column_metadata": "DATE",
+                            "column_sample_data": "2023-01-05"
+                        },
+                        {
+                            "column": "client_since",
+                            "column_description": "The date since the client has been associated with the firm.",
+                            "column_metadata": "DATE",
+                            "column_sample_data": "2021-03-05"
+                        },
+                        {
+                            "column": "last_login",
+                            "column_description": "The date of the client's last login.",
+                            "column_metadata": "DATE",
+                            "column_sample_data": "2022-08-14"
+                        },
+                        {
+                            "column": "last_contacted",
+                            "column_description": "The date when the client was last contacted.",
+                            "column_metadata": "DATE",
+                            "column_sample_data": "2023-03-26"
+                        },
+                        {
+                            "column": "preferred_contact_method",
+                            "column_description": "The preferred method of contact for the client.",
+                            "column_metadata": "VARCHAR(1000)",
+                            "column_sample_data": ["Phone", "Email"]
+                        },
+                        {
+                            "column": "do_not_email",
+                            "column_description": "Indicates if the client prefers not to be contacted via email.",
+                            "column_metadata": "VARCHAR(1000)",
+                            "column_sample_data": ["Yes", "No"]
+                        },
+                        {
+                            "column": "do_not_call",
+                            "column_description": "Indicates if the client prefers not to be contacted via phone.",
+                            "column_metadata": "VARCHAR(1000)",
+                            "column_sample_data": ["Yes", "No"]
+                        },
+                        {
+                            "column": "do_not_mail",
+                            "column_description": "Indicates if the client prefers not to receive mail.",
+                            "column_metadata": "VARCHAR(1000)",
+                            "column_sample_data": ["Yes", "No"]
+                        },
+                        {
+                            "column": "paperless_statements",
+                            "column_description": "Indicates if the client prefers to receive statements electronically.",
+                            "column_metadata": "VARCHAR(1000)",
+                            "column_sample_data": ["Yes", "No"]
+                        },
+                        {
+                            "column": "client_type",
+                            "column_description": "The type of client (e.g., Current Client, Prospective Client).",
+                            "column_metadata": "VARCHAR(1000)",
+                            "column_sample_data": ["Current Client", "Opportunity"]
+                        },
+                        {
+                            "column": "lead_source",
+                            "column_description": "The source from which the client was acquired.",
+                            "column_metadata": "VARCHAR(1000)",
+                            "column_sample_data": ["Self-sourced", "Walk-in", "Referred"]
+                        },
+                        {
+                            "column": "advisor_id",
+                            "column_description": "The identifier of the advisor associated with the client.",
+                            "column_metadata": "VARCHAR(1000)",
+                            "column_sample_data": "A01567"
+                        },
+                        {
+                            "column": "advisor_name",
+                            "column_description": "The name of the advisor associated with the client.",
+                            "column_metadata": "VARCHAR(1000)",
+                            "column_sample_data": "Wendy Hyde"
+                        },
+                        {
+                            "column": "total_assets",
+                            "column_description": "The total assets of the client.",
+                            "column_metadata": "VARCHAR(1000)",
+                            "column_sample_data": "1771627.26"
+                        },
+                        {
+                            "column": "managed_assets",
+                            "column_description": "The assets under management for the client.",
+                            "column_metadata": "VARCHAR(1000)",
+                            "column_sample_data": "1100000"
+                        },
+                        {
+                            "column": "brokerage_assets",
+                            "column_description": "The brokerage assets of the client.",
+                            "column_metadata": "VARCHAR(1000)",
+                            "column_sample_data": "45000"
+                        },
+                        {
+                            "column": "digital_crypto_assets",
+                            "column_description": "The digital or cryptocurrency assets of the client.",
+                            "column_metadata": "VARCHAR(1000)",
+                            "column_sample_data": "7000.72"
+                        },
+                        {
+                            "column": "brokerage_cash_assets",
+                            "column_description": "The cash assets in the client's brokerage account.",
+                            "column_metadata": "VARCHAR(1000)",
+                            "column_sample_data": "49624.8"
+                        },
+                        {
+                            "column": "banking_assets",
+                            "column_description": "The banking assets of the client.",
+                            "column_metadata": "VARCHAR(1000)",
+                            "column_sample_data": "50001.74"
+                        },
+                        {
+                            "column": "retirement_assets",
+                            "column_description": "The retirement assets of the client.",
+                            "column_metadata": "VARCHAR(1000)",
+                            "column_sample_data": "500000"
+                        },
+                        {
+                            "column": "margin_balance",
+                            "column_description": "The margin balance of the client.",
+                            "column_metadata": "VARCHAR(1000)",
+                            "column_sample_data": "20000"
+                        },
+                        {
+                            "column": "trust_assets",
+                            "column_description": "The trust assets of the client.",
+                            "column_metadata": "VARCHAR(1000)",
+                            "column_sample_data": "0"
+                        },
+                        {
+                            "column": "insurance_coverage",
+                            "column_description": "The insurance coverage of the client.",
+                            "column_metadata": "VARCHAR(1000)",
+                            "column_sample_data": "250000"
+                        },
+                        {
+                            "column": "revenue",
+                            "column_description": "The revenue generated from the client.",
+                            "column_metadata": "VARCHAR(1000)",
+                            "column_sample_data": "4429.07"
+                        },
+                        {
+                            "column": "ixi",
+                            "column_description": "An index or code related to the client's financial information.",
+                            "column_metadata": "VARCHAR(1000)",
+                            "column_sample_data": "2000000"
+                        },
+                        {
+                            "column": "wealth_range",
+                            "column_description": "The range of the client's wealth.",
+                            "column_metadata": "VARCHAR(1000)",
+                            "column_sample_data": "$1M-$2M"
+                        },
+                        {
+                            "column": "primary_account_number",
+                            "column_description": "The primary account number of the client.",
+                            "column_metadata": "VARCHAR(1000)",
+                            "column_sample_data": "SE3935545455569711761116"
+                        },
+                        {
+                            "column": "total_managed_accounts",
+                            "column_description": "The total number of managed accounts the client has.",
+                            "column_metadata": "DECIMAL(38, 0)",
+                            "column_sample_data": "7"
+                        },
+                        {
+                            "column": "total_brokerage_accounts",
+                            "column_description": "The total number of brokerage accounts the client has.",
+                            "column_metadata": "DECIMAL(38, 0)",
+                            "column_sample_data": "1"
+                        },
+                        {
+                            "column": "total_bank_accounts",
+                            "column_description": "The total number of bank accounts the client has.",
+                            "column_metadata": "DECIMAL(38, 0)",
+                            "column_sample_data": "2"
+                        },
+                        {
+                            "column": "total_retirement_accounts",
+                            "column_description": "The total number of retirement accounts the client has.",
+                            "column_metadata": "DECIMAL(38, 0)",
+                            "column_sample_data": "1"
+                        },
+                        {
+                            "column": "total_loans",
+                            "column_description": "The total number of loans the client has.",
+                            "column_metadata": "DECIMAL(38, 0)",
+                            "column_sample_data": "0"
+                        },
+                        {
+                            "column": "total_trust_accounts",
+                            "column_description": "The total number of trust accounts the client has.",
+                            "column_metadata": "DECIMAL(38, 0)",
+                            "column_sample_data": "0"
+                        },
+                        {
+                            "column": "insurance_products",
+                            "column_description": "The number of insurance products the client has.",
+                            "column_metadata": "DECIMAL(38, 0)",
+                            "column_sample_data": "1"
+                        },
+                        {
+                            "column": "accredited_investor",
+                            "column_description": "Indicates if the client is an accredited investor.",
+                            "column_metadata": "VARCHAR(1000)",
+                            "column_sample_data": ["Yes", "No"]
+                        },
+                        {
+                            "column": "recurring_deposits_transfers",
+                            "column_description": "Indicates if the client has recurring deposits or transfers.",
+                            "column_metadata": "VARCHAR(1000)",
+                            "column_sample_data": ["Yes", "No"]
+                        },
+                        {
+                            "column": "alternatives_interest_flag",
+                            "column_description": "Indicates if the client is interested in alternative investments.",
+                            "column_metadata": "VARCHAR(1000)",
+                            "column_sample_data": ["Yes", "No"]
+                        },
+                        {
+                            "column": "esg_interest_flag",
+                            "column_description": "Indicates if the client is interested in ESG (Environmental, Social, and Governance) investments.",
+                            "column_metadata": "VARCHAR(1000)",
+                            "column_sample_data": ["Yes", "No"]
+                        },
+                        {
+                            "column": "digital_assets_interest_flag",
+                            "column_description": "Indicates if the client is interested in digital assets.",
+                            "column_metadata": "VARCHAR(1000)",
+                            "column_sample_data": ["Yes", "No"]
+                        },
+                        {
+                            "column": "date_of_last_annual_review",
+                            "column_description": "The date of the last annual review for the client.",
+                            "column_metadata": "DATE",
+                            "column_sample_data": "2022-10-14"
+                        },
+                        {
+                            "column": "date_of_next_annual_review",
+                            "column_description": "The date of the next scheduled annual review for the client.",
+                            "column_metadata": "DATE",
+                            "column_sample_data": "2023-10-14"
+                        }
+                    ]
+                },
+                {
+                    "table_name": "client_notes",
+                    "table_description": "The 'client_notes' table contains records of notes taken during meetings between advisors and their clients. It includes the client's ID and name, the advisor's ID and name, the date of the meeting, the category of the meeting, and the detailed notes from the meeting. The 'client_id' and 'advisor_id' fields are likely to be foreign keys that reference other tables containing client and advisor details, respectively. The 'category' field indicates the type of meeting, such as 'Annual Financial Planning / Review' or 'Mortgage Refinancing Strategy'. The 'meeting_notes' field contains extensive text detailing the discussion points and outcomes of the meetings.",
+                    "columns": [
+                        {
+                            "column": "client_id",
+                            "column_description": "The unique identifier for the client.",
+                            "column_metadata": "VARCHAR(1000)",
+                            "column_sample_data": "C01234"
+                        },
+                        {
+                            "column": "client_name",
+                            "column_description": "The name of the client.",
+                            "column_metadata": "VARCHAR(1000)",
+                            "column_sample_data": "Derek Vang"
+                        },
+                        {
+                            "column": "advisor_id",
+                            "column_description": "The unique identifier for the advisor.",
+                            "column_metadata": "VARCHAR(1000)",
+                            "column_sample_data": "A01567"
+                        },
+                        {
+                            "column": "advisor_name",
+                            "column_description": "The name of the advisor.",
+                            "column_metadata": "VARCHAR(1000)",
+                            "column_sample_data": "Wendy Hyde"
+                        },
+                        {
+                            "column": "date_of_meeting",
+                            "column_description": "The date when the meeting took place.",
+                            "column_metadata": "DATE",
+                            "column_sample_data": "2023-03-26"
+                        },
+                        {
+                            "column": "category",
+                            "column_description": "The category of the meeting.",
+                            "column_metadata": "VARCHAR(1000)",
+                            "column_sample_data": "Annual Financial Planning / Review"
+                        },
+                        {
+                            "column": "meeting_notes",
+                            "column_description": "The notes taken during the meeting.",
+                            "column_metadata": "VARCHAR(25000)",
+                            "column_sample_data": "Client was due for annual review of their financial plan & goals."
+                        }
+                    ]
+                },
+                {
+                    "table_name": "client_status",
+                    "table_description": "The client_status table contains information about the status of clients' accounts. It includes fields such as client_id, client_name, advisor_id, advisor_name, client_type, client_onboarding_status, client_pending_onboarding_activities, account_type, account_status, date_of_request, account_opening_stage, funding_stage, amount_funded, current_responsible_department, current_owner, and reason_for_account_closure. This table is used to track the onboarding process of clients, the status of their accounts, and any pending activities related to account opening or funding.",
+                    "columns": [
+                        {
+                            "column": "client_id",
+                            "column_description": "A unique identifier for the client.",
+                            "column_metadata": "VARCHAR(1000)",
+                            "column_sample_data": "C01234"
+                        },
+                        {
+                            "column": "client_name",
+                            "column_description": "The name of the client.",
+                            "column_metadata": "VARCHAR(1000)",
+                            "column_sample_data": "Derek Vang"
+                        },
+                        {
+                            "column": "advisor_id",
+                            "column_description": "A unique identifier for the advisor associated with the client.",
+                            "column_metadata": "VARCHAR(1000)",
+                            "column_sample_data": "A01567"
+                        },
+                        {
+                            "column": "advisor_name",
+                            "column_description": "The name of the advisor associated with the client.",
+                            "column_metadata": "VARCHAR(1000)",
+                            "column_sample_data": "Wendy Hyde"
+                        },
+                        {
+                            "column": "client_type",
+                            "column_description": "The type of client, e.g., new or existing.",
+                            "column_metadata": "VARCHAR(1000)",
+                            "column_sample_data": ["Existing", "New", null]
+                        },
+                        {
+                            "column": "client_onboarding_status",
+                            "column_description": "The current onboarding status of the client.",
+                            "column_metadata": "VARCHAR(1000)",
+                            "column_sample_data": ["Complete", "In Progress", null]
+                        },
+                        {
+                            "column": "client_pending_onboarding_activities",
+                            "column_description": "Any pending activities related to client onboarding.",
+                            "column_metadata": "VARCHAR(1000)",
+                            "column_sample_data": "NA"
+                        },
+                        {
+                            "column": "account_type",
+                            "column_description": "The type of account the client has.",
+                            "column_metadata": "VARCHAR(1000)",
+                            "column_sample_data": ["Individual Investment Account", "Individual Retirement Account", "Trust Account", null]
+                        },
+                        {
+                            "column": "account_status",
+                            "column_description": "The current status of the client's account.",
+                            "column_metadata": "VARCHAR(1000)",
+                            "column_sample_data": ["Open", "Pending Opening", "Pending Closure", null]
+                        },
+                        {
+                            "column": "date_of_request",
+                            "column_description": "The date when the client's account request was made.",
+                            "column_metadata": "DATE",
+                            "column_sample_data": "2022-04-05"
+                        },
+                        {
+                            "column": "account_opening_stage",
+                            "column_description": "The current stage in the account opening process.",
+                            "column_metadata": "VARCHAR(1000)",
+                            "column_sample_data": ["Client Profiling", "Risk Assessment", "Funding", "NA", null]
+                        },
+                        {
+                            "column": "funding_stage",
+                            "column_description": "The current stage in the funding process for the client's account.",
+                            "column_metadata": "VARCHAR(1000)",
+                            "column_sample_data": ["NA", "Monthly Contribution", "Initial Deposit", null, "Pending"]
+                        },
+                        {
+                            "column": "amount_funded",
+                            "column_description": "The amount that has been funded to the client's account.",
+                            "column_metadata": "VARCHAR(1000)",
+                            "column_sample_data": "NA"
+                        },
+                        {
+                            "column": "current_responsible_department",
+                            "column_description": "The department currently responsible for the client's account.",
+                            "column_metadata": "VARCHAR(1000)",
+                            "column_sample_data": ["Branch", "Operations", "Risk Operations", null]
+                        },
+                        {
+                            "column": "current_owner",
+                            "column_description": "The current owner or handler of the client's account within the responsible department.",
+                            "column_metadata": "VARCHAR(1000)",
+                            "column_sample_data": "William Anderson"
+                        },
+                        {
+                            "column": "reason_for_account_closure",
+                            "column_description": "The reason for closure of the client's account, if applicable.",
+                            "column_metadata": "VARCHAR(1000)",
+                            "column_sample_data": "NA"
+                        }
+                    ]
+                },
+                {
+                    "table_name": "net_cash_flows",
+                    "table_description": "The net_cash_flows table contains records of cash inflows and outflows for various funds. Each record includes a unique transaction_id, the name of the fund (fund_name), the type of partnership (partnership_type), the date of the transaction (transaction_date), the type of cash flow (cash_inflow_or_outflow), and the amount of the cash flow in dollars (cash_flow_contribution_amount_dollars). The transaction_id serves as the primary key for the table.",
+                    "columns": [
+                        {
+                            "column": "transaction_id",
+                            "column_description": "A unique identifier for each transaction.",
+                            "column_metadata": "VARCHAR(1000) NOT NULL, PRIMARY KEY",
+                            "column_sample_data": "AM8901"
+                        },
+                        {
+                            "column": "fund_name",
+                            "column_description": "The name of the fund involved in the transaction.",
+                            "column_metadata": "VARCHAR(1000)",
+                            "column_sample_data": "BCP Fund"
+                        },
+                        {
+                            "column": "partnership_type",
+                            "column_description": "The type of partnership associated with the fund.",
+                            "column_metadata": "VARCHAR(1000)",
+                            "column_sample_data": ["Limited Partner (LP)", "General Partner (GP)"]
+                        },
+                        {
+                            "column": "transaction_date",
+                            "column_description": "The date on which the transaction occurred.",
+                            "column_metadata": "DATE",
+                            "column_sample_data": "2005-03-18"
+                        },
+                        {
+                            "column": "cash_inflow_or_outflow",
+                            "column_description": "Indicates whether the transaction is a cash inflow or outflow.",
+                            "column_metadata": "VARCHAR(1000)",
+                            "column_sample_data": ["Cash Inflow","outflow"]
+                        },
+                        {
+                            "column": "cash_flow_contribution_amount_dollars",
+                            "column_description": "The amount of cash flow in dollars.",
+                            "column_metadata": "DECIMAL(38, 0)",
+                            "column_sample_data": "1052500"
+                        }
+                    ]
+                },
+                {
+                    "table_name": "portfolio_construction",
+                    "table_description": "The 'portfolio_construction' table contains information about various holdings within a fund's portfolio. It includes fields such as the FIGI identifier, holding name, fund name, whether it's a fixed income security, percentage of net assets, maturity date, coupon rate, asset class, market value, par value of contracts, and the broker involved. The primary key is the 'identifier_figi' which is a unique identifier for each holding.",
+                    "columns": [
+                        {
+                            "column": "identifier_figi",
+                            "column_description": "The unique identifier for the financial instrument, typically a FIGI.",
+                            "column_metadata": "VARCHAR(1000) NOT NULL, PRIMARY KEY",
+                            "column_sample_data": "BBG01387G4L9"
+                        },
+                        {
+                            "column": "holding_name",
+                            "column_description": "The name of the holding.",
+                            "column_metadata": "VARCHAR(1000)",
+                            "column_sample_data": "Dallas Forth Worth International Airport"
+                        },
+                        {
+                            "column": "fund_name",
+                            "column_description": "The name of the fund that holds the security.",
+                            "column_metadata": "VARCHAR(1000)",
+                            "column_sample_data": "MUNI Long Fund"
+                        },
+                        {
+                            "column": "fixed_income_security",
+                            "column_description": "Indicates whether the security is a fixed income security.",
+                            "column_metadata": "VARCHAR(1000)",
+                            "column_sample_data": "Yes"
+                        },
+                        {
+                            "column": "percentage_of_net_assets",
+                            "column_description": "The percentage that the holding represents of the net assets.",
+                            "column_metadata": "VARCHAR(1000)",
+                            "column_sample_data": "0.65"
+                        },
+                        {
+                            "column": "maturity_date",
+                            "column_description": "The maturity date of the fixed income security.",
+                            "column_metadata": "DATE",
+                            "column_sample_data": "2045-11-01"
+                        },
+                        {
+                            "column": "coupon",
+                            "column_description": "The coupon rate of the fixed income security.",
+                            "column_metadata": "VARCHAR(1000)",
+                            "column_sample_data": "4.000"
+                        },
+                        {
+                            "column": "asset_class",
+                            "column_description": "The asset class of the holding.",
+                            "column_metadata": "VARCHAR(1000)",
+                            "column_sample_data": "Bond"
+                        },
+                        {
+                            "column": "market_value",
+                            "column_description": "The market value of the holding.",
+                            "column_metadata": "VARCHAR(1000)",
+                            "column_sample_data": "2846364.13"
+                        },
+                        {
+                            "column": "par_value_contracts",
+                            "column_description": "The par value or number of contracts for the security.",
+                            "column_metadata": "DECIMAL(38, 0)",
+                            "column_sample_data": "3000000"
+                        },
+                        {
+                            "column": "broker",
+                            "column_description": "The broker involved with the security.",
+                            "column_metadata": "VARCHAR(1000)",
+                            "column_sample_data": "Morgan Stanley"
+                        }
+                    ]
+                },
+                {
+                    "table_name": "primary_benchmark",
+                    "table_description": "This table contains information about benchmarks used for comparison against portfolios. It includes a unique identifier for each benchmark (benchmark_id), whether it is a primary benchmark or part of a portfolio (primary_benchmark_or_portfolio), the market capitalization category (small_cap_mid_cap_or_large_cap_fund), the investment strategy (investment_strategy), and the percentage of assets allocated along with weight allocation (percentage_of_assets_allocated_and_weight_allocation). The primary key of the table is benchmark_id.",
+                    "columns": [
+                        {
+                            "column": "benchmark_id",
+                            "column_description": "A unique identifier for each benchmark.",
+                            "column_metadata": "VARCHAR(1000) NOT NULL",
+                            "column_sample_data": "ABC123"
+                        },
+                        {
+                            "column": "primary_benchmark_or_portfolio",
+                            "column_description": "Indicates whether the record pertains to a primary benchmark or a portfolio.",
+                            "column_metadata": "VARCHAR(1000)",
+                            "column_sample_data": "Primary Benchmark"
+                        },
+                        {
+                            "column": "small_cap_mid_cap_or_large_cap_fund",
+                            "column_description": "Specifies the size category of the fund: Small-Cap, Mid-Cap, or Large-Cap.",
+                            "column_metadata": "VARCHAR(1000)",
+                            "column_sample_data": "Small-Cap"
+                        },
+                        {
+                            "column": "investment_strategy",
+                            "column_description": "Describes the investment strategy such as Value, Blend, or Growth.",
+                            "column_metadata": "VARCHAR(1000)",
+                            "column_sample_data": "Value"
+                        },
+                        {
+                            "column": "percentage_of_assets_allocated_and_weight_allocation",
+                            "column_description": "Shows the percentage of assets allocated and the weight allocation for the benchmark.",
+                            "column_metadata": "VARCHAR(1000)",
+                            "column_sample_data": "2.51%"
+                        }
+                    ]
+                },
+                {
+                    "table_name": "security_ratings_data",
+                    "table_description": "The `security_ratings_data` table contains information about security ratings for various companies. It includes a unique identifier for each rating (`rating_id`), the date of the rating (`rating_date`), whether there was a change in the rating (`rating_change`), the direction of the rating change (`rating_increase_or_decrease`), the name of the company being rated (`company_name`), the ticker symbol of the company (`ticker`), the fund associated with the rating (`fund`), the rating itself (`rating`), and the source of the rating (`source`). The primary key of the table is `rating_id`.",
+                    "columns": [
+                        {
+                            "column": "rating_id",
+                            "column_description": "A unique identifier for each rating entry.",
+                            "column_metadata": "VARCHAR(1000) NOT NULL, PRIMARY KEY",
+                            "column_sample_data": "A1234"
+                        },
+                        {
+                            "column": "rating_date",
+                            "column_description": "The date on which the rating was given.",
+                            "column_metadata": "DATE",
+                            "column_sample_data": "2023-09-24"
+                        },
+                        {
+                            "column": "rating_change",
+                            "column_description": "Indicates if there was a change in the rating.",
+                            "column_metadata": "VARCHAR(1000)",
+                            "column_sample_data": "Yes there was a rating change"
+                        },
+                        {
+                            "column": "rating_increase_or_decrease",
+                            "column_description": "Specifies whether the rating was increased or decreased.",
+                            "column_metadata": "VARCHAR(1000)",
+                            "column_sample_data": "Rating Increase"
+                        },
+                        {
+                            "column": "company_name",
+                            "column_description": "The name of the company associated with the rating.",
+                            "column_metadata": "VARCHAR(1000)",
+                            "column_sample_data": "American Airlines"
+                        },
+                        {
+                            "column": "ticker",
+                            "column_description": "The stock ticker symbol for the company.",
+                            "column_metadata": "VARCHAR(1000)",
+                            "column_sample_data": "AAL"
+                        },
+                        {
+                            "column": "fund",
+                            "column_description": "The fund associated with the rating.",
+                            "column_metadata": "VARCHAR(1000)",
+                            "column_sample_data": "JETS"
+                        },
+                        {
+                            "column": "rating",
+                            "column_description": "The actual rating given to the company.",
+                            "column_metadata": "VARCHAR(1000)",
+                            "column_sample_data": "American Airlines has largely completed its fleet renewal which should decrease capital expenditures"
+                        },
+                        {
+                            "column": "source",
+                            "column_description": "The source or entity that provided the rating.",
+                            "column_metadata": "VARCHAR(1000)",
+                            "column_sample_data": "Jeffries"
+                        }
+                    ]
+                },
+                {
+                    "table_name": "trade_blotter",
+                    "table_description": "A record of trade transactions including fields for trade identification, trade and settlement dates, currency, broker identifiers, security information, trade execution details, and fulfillment duration.",
+                    "columns": [
+                        {
+                            "column": "ticket_id",
+                            "column_description": "A unique identifier for each trade ticket.",
+                            "column_metadata": "VARCHAR(1000) NOT NULL, PRIMARY KEY",
+                            "column_sample_data": "93422"
+                        },
+                        {
+                            "column": "trade_date",
+                            "column_description": "The date on which the trade was executed.",
+                            "column_metadata": "DATE",
+                            "column_sample_data": "2014-05-02"
+                        },
+                        {
+                            "column": "currency",
+                            "column_description": "The currency in which the trade was made.",
+                            "column_metadata": "VARCHAR(1000)",
+                            "column_sample_data": "USD"
+                        },
+                        {
+                            "column": "broker_id",
+                            "column_description": "The identifier for the broker involved in the trade.",
+                            "column_metadata": "VARCHAR(1000)",
+                            "column_sample_data": "BTIG"
+                        },
+                        {
+                            "column": "prime_broker",
+                            "column_description": "The prime broker for the trade.",
+                            "column_metadata": "VARCHAR(1000)",
+                            "column_sample_data": "GS"
+                        },
+                        {
+                            "column": "security_short_name",
+                            "column_description": "The short name of the security traded.",
+                            "column_metadata": "VARCHAR(1000)",
+                            "column_sample_data": "DYNEGY INC-CW17"
+                        },
+                        {
+                            "column": "ticker",
+                            "column_description": "The ticker symbol of the security.",
+                            "column_metadata": "VARCHAR(1000)",
+                            "column_sample_data": "DYN/WS"
+                        },
+                        {
+                            "column": "average_price_execution",
+                            "column_description": "The average price at which the security was executed.",
+                            "column_metadata": "VARCHAR(1000)",
+                            "column_sample_data": "2.3467"
+                        },
+                        {
+                            "column": "average_traded_volume",
+                            "column_description": "The average volume of the security that was traded.",
+                            "column_metadata": "VARCHAR(1000)",
+                            "column_sample_data": "106972"
+                        },
+                        {
+                            "column": "settle_date",
+                            "column_description": "The date by which the trade must be settled.",
+                            "column_metadata": "DATE",
+                            "column_sample_data": "2014-05-06"
+                        },
+                        {
+                            "column": "security",
+                            "column_description": "The full name or description of the security.",
+                            "column_metadata": "VARCHAR(1000)",
+                            "column_sample_data": "DYN/WS C40 10/17"
+                        },
+                        {
+                            "column": "number_of_days_to_fulfill_order",
+                            "column_description": "The number of days to fulfill the order from the trade date.",
+                            "column_metadata": "DECIMAL(38, 0)",
+                            "column_sample_data": "4"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,23 @@
+<nz-layout class="layout">
+  <!-- Sidebar for chat -->
+  <nz-sider nzCollapsible [nzCollapsedWidth]="0" [nzWidth]="siderWidth" [nzCollapsed]="isCollapsed" [nzZeroTrigger]="zeroTrigger" (nzCollapsedChange)="toggleCollapsed()">
+    <ng-template #zeroTrigger>
+      <button>
+        <i nz-icon [nzType]="isCollapsed ? 'right' : 'left'" nzTheme="outline" ></i>
+      </button>
+   </ng-template>
+    <app-sidebar
+    [clients]="clients"
+    (clientSelected)="onSelectClient($event)"
+    ></app-sidebar>
+  </nz-sider>
+  <!-- Data and Charts -->
+  <nz-layout class="right-layout">
+    <nz-content>
+      <div *ngIf="selectedClient">
+        <app-client-data [client]="selectedClient"></app-client-data>
+        <app-charts [client]="selectedClient"></app-charts>
+      </div>
+    </nz-content>
+  </nz-layout>
+</nz-layout>      

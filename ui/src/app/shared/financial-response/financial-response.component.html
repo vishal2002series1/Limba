@@ -1,0 +1,25 @@
+<!-- Collapsible Container -->
+<div class="collapse-container" *ngIf="financialContent && financialContent?.financialType">
+    <div class="d-grid align-items-center">
+        <h5 class="heading-h5 me-2">
+            {{financialContent.financialType}}
+        </h5>
+    </div>
+    <button class="border-0 bg-transparent d-flex align-items-center collapse-btn px-0"
+    [ngClass]="{ 'active': activeTab === 'someString'}" (click)="toggleDiv('someString')">
+        <img src="../../../assets/images/down-arrow.png" width="16" height="16">
+    </button>
+</div>
+
+<!-- Expanded Content -->
+<div class="main-chunk-content" [ngClass]="{ 'active': activeTab === 'someString'}">
+    <ng-container *ngIf="financialContent && financialContent.markedString">
+        <div class="chunk-result">
+                <p [ngClass]="{'reasoning-steps': financialContent.financialType === 'Reasoning Steps'}"> 
+                    <span [innerHTML]="financialContent.markedString"></span>
+                </p>
+            <hr class="my-2" style="border-bottom: 1px solid #8a8787; border-top: none;" >
+
+        </div>
+    </ng-container>
+</div>

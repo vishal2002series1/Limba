@@ -1,0 +1,52 @@
+{
+  "name": "irah",
+  "version": "0.0.0",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "prebuild": "node copy-files.js",
+    "build": "npm run prebuild && ng build",
+    "build:uat": "npm run prebuild && ng build --configuration=uat",
+    "build:production": "npm run prebuild && ng build --configuration=production",
+    "watch": "ng build --watch --configuration development",
+    "test": "ng test"
+  },
+  "private": true,
+  "dependencies": {
+    "@angular/animations": "^17.1.0",
+    "@angular/common": "^17.1.0",
+    "@angular/compiler": "^17.1.0",
+    "@angular/core": "^17.1.0",
+    "@angular/forms": "^17.1.0",
+    "@angular/platform-browser": "^17.1.0",
+    "@angular/platform-browser-dynamic": "^17.1.0",
+    "@angular/router": "^17.1.0",
+    "@ant-design/icons-angular": "^17.0.0",
+    "angular-plotly.js": "^5.2.2",
+    "bootstrap": "^5.2.3",
+    "Buffer": "^0.0.0",
+    "marked": "^12.0.0",
+    "ng-zorro-antd": "^17.3.0",
+    "ngx-bootstrap": "^12.0.0",
+    "ngx-markdown": "^17.2.1",
+    "ngx-toastr": "^16.2.0",
+    "plotly.js-dist-min": "^2.33.0",
+    "rxjs": "~7.8.0",
+    "tslib": "^2.3.0",
+    "zone.js": "~0.14.7"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "^17.1.0",
+    "@angular/cli": "~17.1.0",
+    "@angular/compiler-cli": "^17.1.0",
+    "@types/jasmine": "~4.3.0",
+    "@types/plotly.js-dist-min": "^2.3.4",
+    "jasmine-core": "~4.5.0",
+    "karma": "~6.4.0",
+    "karma-chrome-launcher": "~3.1.0",
+    "karma-coverage": "~2.2.0",
+    "karma-jasmine": "~5.1.0",
+    "karma-jasmine-html-reporter": "~2.0.0",
+    "typescript": "~5.3.3"
+  }
+}

@@ -1,0 +1,136 @@
+<div class="top-right-nav">
+  <a routerLink="/home"><span nz-icon nzType="home" nzTheme="outline"></span></a>
+</div>
+<div class="row justify-content-center">
+    <div class="col px-0">
+      <div class="chat-container">
+  
+        <div class="chat-history" #scrollme>
+          <div class="d-flex flex-column">
+            <ng-container *ngFor="let message of messages">
+              <div [class]="message.type">
+  
+                <!-- Bot Response -->
+                <div class="d-flex flex-column response-container" *ngIf="message.type === 'bot'">
+                  <ng-container *ngIf="message.response">
+  
+                    <ng-template #tooltip>
+                      <div class="tooltip-container">
+                        <div class="text-content" 
+                        *ngIf="message.response && message.response.annotations 
+                        && message.response.annotations.DatabaseSearchTool && message.response.annotations.DatabaseSearchTool.sql_query
+                        && message.response.annotations.DatabaseSearchTool.sql_query.length > 0 && message.response.annotations.DatabaseSearchTool.sql_query[0] !== ''">
+                          {{ message.response.annotations.DatabaseSearchTool.sql_query && message.response.annotations.DatabaseSearchTool.sql_query.length > 0 && message.response.annotations.DatabaseSearchTool.sql_query[0] !== ''? message.response.annotations.DatabaseSearchTool.sql_query[0] : '' }}
+                        </div>             
+                      </div>
+                    </ng-template>
+  
+                    <div class="chunk-content" [ngClass]="message.response.query_type === 'Client Data related Question'
+                    || message.response.query_type === 'Negative Case Question' ? 'mb-0' : ''">              
+                      <p nz-typography nzCopyable [nzCopyText]="message.response.copy_response" class="me-2">
+                        <!-- {{message.response.response}} -->
+                        <span [innerHTML]="message.response.marked_response"></span>
+
+                        <button class="border-0 bg-transparent p-0 text-capitalize" triggers="hover" #pop="bs-tooltip"
+                        *ngIf="message.response && message.response.annotations 
+                        && message.response.annotations.DatabaseSearchTool && message.response.annotations.DatabaseSearchTool.sql_query
+                        && message.response.annotations.DatabaseSearchTool.sql_query.length > 0 && message.response.annotations.DatabaseSearchTool.sql_query[0] !== ''" [tooltip]="tooltip">
+                          <img class="opacity-75" src="../../../assets/images/sql-icon.png" width="18" height="18"
+                            alt="infomation icon">
+                        </button>
+                      </p>
+                    </div>
+  
+                    <ng-container *ngIf="message.response.query_type !== ('Client Data related Question' || 'Negative Case Question')">
+  
+                      <!-- Summarized Items from Source Start -->
+                        <ng-container *ngIf="message.response && message.response.annotations && message.response.annotations.ContentSearchTool && message.response.annotations.ContentSearchTool.content_used && message.response.annotations.ContentSearchTool.content_used.length > 0">
+                          <div class="chunk-details">
+                            <h4 class="heading-h4">Sources Used</h4>
+                          </div>
+                          <div class="content-container" *ngFor="let content of message.response.annotations.ContentSearchTool.content_used">
+                            <app-bot-response [content]="content"
+                            [activeTab]="activeTab">
+                            </app-bot-response>
+                          </div>
+                        </ng-container>  
+                      <!-- Summarized Items from Source End -->
+    
+                      <!-- Additional Context Sources from Source Start -->
+                        <ng-container *ngIf="message.response && message.response.annotations && message.response.annotations.ContentSearchTool && message.response.annotations.ContentSearchTool.other_relevant_content && message.response.annotations.ContentSearchTool.other_relevant_content.length > 0">
+                          <hr style="border-top: 1px solid #e4e4e4; margin-top: 5px; opacity: 1;">
+                          <h4 class="heading-h4 mb-2">Other Relevant Sources</h4>
+                          <div class="content-container" *ngFor="let content of message.response.annotations.ContentSearchTool.other_relevant_content">
+                            <app-bot-response [content]="content"
+                            [activeTab]="activeTab">
+                            </app-bot-response>
+                          </div>
+                        </ng-container>  
+                      <!-- Additional Context Sources from Source End -->
+
+                      <!-- Google Context Sources Start -->
+                        <ng-container *ngIf="message.response && message.response.annotations && message.response.annotations.GoogleSearchTool && message.response.annotations.GoogleSearchTool.urls_used && message.response.annotations.GoogleSearchTool.urls_used.length > 0">
+                          <hr style="border-top: 1px solid #e4e4e4; margin-top: 5px; opacity: 1;">
+                          <h4 class="heading-h4 mb-2">Sources from Google</h4>
+                          <div class="content-container" *ngFor="let content of message.response.annotations.GoogleSearchTool.urls_used">
+                            <app-bot-response [content]="content"
+                            [activeTab]="activeTab">
+                            </app-bot-response>
+                          </div>
+                        </ng-container>  
+                      <!-- Google Context Sources End -->
+    
+                      <!-- Google Other Sources Start -->
+                        <ng-container *ngIf="message.response && message.response.annotations && message.response.annotations.GoogleSearchTool && message.response.annotations.GoogleSearchTool.other_relevant_urls && message.response.annotations.GoogleSearchTool.other_relevant_urls.length > 0">
+                          <hr style="border-top: 1px solid #e4e4e4; margin-top: 5px; opacity: 1;">
+                          <h4 class="heading-h4 mb-2">Other Sources from Google</h4>
+                          <div class="content-container" *ngFor="let content of message.response.annotations.GoogleSearchTool.other_relevant_urls">
+                            <app-bot-response [content]="content"
+                            [activeTab]="activeTab">
+                            </app-bot-response>
+                          </div>
+                        </ng-container>  
+                      <!-- Google Other Sources End -->
+    
+                    </ng-container>
+  
+                  </ng-container>
+                    
+                </div>
+                <!-- Bot Response -->
+  
+                <!-- User Response -->
+                <div class="d-flex flex-row response-container" *ngIf="message.type === 'user'">
+                  <p>
+                    {{message.query}}
+                  </p>
+                </div>
+                <!-- User Response -->
+              </div>
+            </ng-container>
+          </div>
+        </div>
+  
+        <!-- <div id="loader-conatiner">
+          <app-loader *ngIf="loader"></app-loader>
+        </div> -->
+
+        <div class="loader" *ngIf="loader">
+          <nz-spin [nzTip]="currentTip" nzSimple></nz-spin>
+        </div>
+        <div class="loader-off" *ngIf="!loader"></div>
+
+        <div class="input-container">
+          <form [formGroup]="chatForm" (ngSubmit)="submitQuery()">
+            <div class="input-inner">
+              <input type="text" id="query" name="query" formControlName="query" placeholder="Send a message"
+                class="form-control form-control-sm">
+              <button type="button" class="btn btn-sm btn-primary" [disabled]="disableForm" (click)="submitQuery()">
+                <img src="../assets/images/submit.png" alt="submit button">
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>

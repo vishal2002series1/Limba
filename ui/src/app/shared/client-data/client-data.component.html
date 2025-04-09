@@ -1,0 +1,30 @@
+<div class="client">
+  <div class="client-head"></div>
+  <h2>Client: {{ client.client_data.name }}</h2>
+  <div class="client-info">
+    <div class="info-block">
+      <h3>General Information</h3>
+      <p>Age: {{ client.client_data.age }}</p>
+      <p>Retirement Age: {{ client.client_data.retirement_age }}</p>
+      <p>Total Savings: {{ client.client_data.total_savings | currency }}</p>
+      <p>Deposit Rate: {{ client.client_data.deposit_rate * 100 }}%</p>
+      <p>Location: {{ client.client_data.location.city }}, {{ client.client_data.location.state }}</p>
+    </div>
+    <div class="info-block">
+      <h3>House Information</h3>
+      <p>Value: {{ client.client_data.house.value | currency }}</p>
+      <p>Mortgage Balance: {{ client.client_data.house.mortgage_balance | currency }}</p>
+      <p>Monthly Payment: {{ client.client_data.house.monthly_payment | currency }}</p>
+      <p>Interest Rate: {{ client.client_data.house.interest_rate * 100 }}%</p>
+      <p>Years Left: {{ client.client_data.house.years_left }}</p>
+    </div>
+    <div class="info-block">
+      <h3>Investment Summary</h3>
+      <p>Retirement Accounts: {{ client.client_data.retirement_accounts.length }}</p>
+      <p>Trust Fund Accounts: {{ client.client_data.trust_fund_accounts.length }}</p>
+      <p>Other Investments: {{ client.client_data.other_investments.length }}</p>
+    </div>
+  </div>
+  <nz-divider></nz-divider>
+</div>
+

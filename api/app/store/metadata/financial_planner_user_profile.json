@@ -1,0 +1,111 @@
+[
+  {
+      "client_data": {
+        "name": "Jane Smith",
+        "age": 45,
+        "retirement_age": 65,
+        "total_savings": 350000,
+        "monthly_income": 12000,
+        "deposit_rate": 0.05,
+        "location": {
+          "city": "New York",
+          "state": "New York"
+        },
+        "retirement_accounts": [
+          {
+            "type": "401k",
+            "balance": 200000,
+            "contribution": 19500,
+            "annual_growth": 0.07
+          },
+          {
+            "type": "IRA",
+            "balance": 100000,
+            "contribution": 6000,
+            "annual_growth": 0.06
+          }
+        ],
+        "trust_fund_accounts": [
+          {
+            "beneficiary": "Child",
+            "balance": 50000,
+            "contribution": 10000,
+            "annual_growth": 0.05
+          },
+          {
+            "beneficiary": "Grandchild",
+            "balance": 0,
+            "contribution": 5000,
+            "annual_growth": 0.04
+          }
+        ],
+        "house": {
+          "value": 800000,
+          "mortgage_balance": 400000,
+          "monthly_payment": 3000,
+          "interest_rate": 0.03,
+          "years_left": 15
+        },
+        "other_investments": [
+          {
+            "type": "Stocks",
+            "balance": 25000,
+            "annual_growth": 0.08
+          },
+          {
+            "type": "Bonds",
+            "balance": 15000,
+            "annual_growth": 0.03
+          }
+        ]
+      }
+    },
+    {
+      "client_data": {
+          "name": "John Doe",
+          "age": 40,
+          "retirement_age": 55,
+          "total_savings": 100000,
+          "monthly_income": 6500,
+          "deposit_rate": 0.03,
+          "location": {
+              "city": "Buffalo",
+              "state": "New York"
+          },
+          "retirement_accounts": [
+              {
+                  "type": "401k",
+                  "balance": 50000,
+                  "contribution": 10000,
+                  "annual_growth": 0.06
+              },
+              {
+                  "type": "IRA",
+                  "balance": 30000,
+                  "contribution": 4000,
+                  "annual_growth": 0.05
+              }
+          ],
+          "trust_fund_accounts": [],
+          "house": {
+              "value": 200000,
+              "mortgage_balance": 150000,
+              "monthly_payment": 1200,
+              "interest_rate": 0.04,
+              "years_left": 20
+          },
+          "other_investments": [
+              {
+                  "type": "Stocks",
+                  "balance": 10000,
+                  "annual_growth": 0.05
+              },
+              {
+                  "type": "Bonds",
+                  "balance": 5000,
+                  "annual_growth": 0.02
+              }
+          ]
+      }
+  }
+]

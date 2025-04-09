@@ -1,0 +1,49 @@
+.loader{
+    height: 55px;
+    position: relative;
+    top: -20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loader-off{
+    height: 35px;
+}
+
+::ng-deep  .ant-spin-dot-item{
+    background-color: #ffe600 !important;
+}
+
+::ng-deep  .ant-spin-spinning{
+    display: block !important;
+}
+
+::ng-deep .ant-spin.ant-spin-show-text .ant-spin-text{
+    color: #333;
+}
+
+.top-right-nav {
+    position: absolute;
+  }
+  
+  .top-right-nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 10px;
+  }
+  
+  .top-right-nav li {
+    display: inline;
+  }
+  
+  .top-right-nav a {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  .bot .response-container .chunk-result p{
+    color: black;
+  }

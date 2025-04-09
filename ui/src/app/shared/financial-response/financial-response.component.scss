@@ -1,0 +1,15 @@
+:host ::ng-deep ul {
+    text-align: left !important;
+    display: contents !important;
+}
+
+:host ::ng-deep .reasoning-steps p{
+    white-space: break-spaces !important; 
+    display: block !important;
+    margin-bottom: 2vh !important;
+}
+
+:host ::ng-deep ul li {
+    font-size: 12px !important; 
+    font-weight: 400 !important;
+}

@@ -1,0 +1,22 @@
+<div class="side">
+
+  <div class="side-top">
+    <div class="side-head">
+      <div class="nav">
+        <a routerLink="/home" class="home"><span nz-icon nzType="home" nzTheme="outline"></span></a>
+        <h2>Financial Advisor Assistant</h2>
+      </div>
+    </div>
+    <p class="client">Select a client</p>
+    <div class="select-container">
+      <nz-select class="custom-select" [(ngModel)]="selectedClient" (ngModelChange)="onSelectClient($event)"> 
+          <nz-option *ngFor="let client of clients" [nzLabel]="client.client_data.name" [nzValue]="client"></nz-option>
+      </nz-select>
+    </div>
+  </div>
+
+  <div class="side-bottom">
+    <app-financial-chat [client]="selectedClient"></app-financial-chat>
+  </div>
+
+</div>

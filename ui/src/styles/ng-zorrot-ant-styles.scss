@@ -1,0 +1,102 @@
+//Ant Component Changes
+// nz-sider {
+//     background-color: $ey-dark-grey;
+// }
+
+.ant-btn-primary {
+    background-color: $ey-yellow;
+    border-color: $ey-yellow;
+    color: $black;
+    border-radius: 0px;
+    font-weight: $font-bold;
+}
+
+.ant-btn:hover {
+    background-color: $ey-dark-grey;
+    border-color: $ey-dark-grey;
+    color: $white;
+}
+
+
+.ant-input:hover,
+.ant-input:focus,
+.ant-select:hover,
+.ant-select:focus,
+.ant-btn:hover,
+.ant-select:not(.ant-select-customize-input) .ant-select-selector:hover,
+.ant-btn:focus {
+    border-color: $primary-grey;
+    color: $white;
+}
+
+.ant-select-focused:not(.ant-select-disabled).ant-select:not(.ant-select-customize-input) .ant-select-selector {
+    border-color: $primary-grey;
+
+}
+
+.ant-select-item-option-selected:not(.ant-select-item-option-disabled) {
+    background-color: $primary-grey-400;
+}
+
+.ant-upload-list {
+    text-align: left;
+}
+
+.sider-bar {
+    min-width: 20rem !important;
+    box-shadow: 2px 0px 5px 0px rgba(167, 159, 159, 0.68);
+}
+
+h2.ant-typography {
+    color: $white
+}
+
+.ant-layout-sider-trigger,
+.ant-layout-sider-children {
+    border-left: 0.0714285714rem solid #33333E;
+    border-right: 0.0714285714rem solid #33333E;
+    box-shadow: 0px 0px 5px 2px rgba(167, 159, 159, 0.68);
+
+}
+
+.ant-layout-header {
+    // background-color: $ey-dark-grey;
+    padding: 0.5rem;
+    border: 0.0714285714rem solid #33333E;
+}
+
+.ant-menu-dark.ant-menu-dark:not(.ant-menu-horizontal) .ant-menu-item-selected {
+    background-color: $primary-grey-400
+}
+
+
+
+
+.ant-layout-sider-has-trigger {
+    padding-bottom: 0px;
+}
+
+
+.ant-layout-content {
+    //overflow-y: hidden;
+    max-height: 91vh;
+}
+
+.ant-layout {
+    overflow: hidden;
+}
+
+.ant-input-affix-wrapper:not(.ant-input-affix-wrapper-disabled):hover {
+    border-color: $primary-grey-400;
+}
+
+// .ant-layout-sider,
+// .ant-menu.ant-menu-dark {
+//     background-color: $ey-dark-grey;
+// }
+
+// .ant-menu-dark.ant-menu-dark:not(.ant-menu-horizontal) .ant-menu-item-selected,
+// .ant-menu.ant-menu-dark .ant-menu-item-selected {
+//     color: #dedee2;
+//     background-color: #2E2E38;
+// }

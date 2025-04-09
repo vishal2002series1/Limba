@@ -1,0 +1,94 @@
+<!-- Collapsible Container -->
+<div class="collapse-container" *ngIf="content?.doc_name && content?.page_content">
+    <div class="d-grid align-items-center">
+        <h5 class="heading-h5 me-2">
+            <a class="d-flex align-items-center" target="_blank" [href]="content?.made_url">
+                <img class="me-1" width="16" height="16" src="../../../assets/images/pdf.svg">
+                {{content?.doc_name}}
+            </a>
+        </h5>
+    </div>
+    <button class="border-0 bg-transparent d-flex align-items-center collapse-btn px-0"
+    [ngClass]="{ 'active': activeTab === 'someString'}" (click)="toggleDiv('someString')">
+        <img src="../../../assets/images/down-arrow.png" width="16" height="16">
+    </button>
+</div>
+
+<!-- Collapsible Container Google-->
+<div class="collapse-container" *ngIf="content?.title">
+    <div class="d-grid align-items-center">
+        <div class="heading-h5 me-2">
+            <a class="d-flex align-items-center" target="_blank" [href]="content?.url">
+                <img class="me-1" width="16" height="16" src="../../../assets/images/pdf.svg">
+                {{content?.title}}
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- Expanded Content -->
+<div class="main-chunk-content" [ngClass]="{ 'active': activeTab === 'someString'}">
+    <ng-container *ngIf="content && content.marked_page_content">
+        <div class="chunk-result">
+                <p>
+                    <span [innerHTML]="(content && content.showMore) ? content.marked_page_content : content.sliced_page_content"></span>
+                    <span *ngIf="!(content && content.showMore)">...</span>
+                    <a href="javascript:;" *ngIf="content && !content.showMore" (click)="content.showMore=true">[Show More]</a>
+                    <a class="ms-1" href="javascript:;" *ngIf="content && content.showMore" (click)="content.showMore=false">[Show Less]</a>                
+                </p>
+                
+            <ul class="mb-0 mt-2">
+                <!-- <li *ngIf="testingUI && chunk.recency_factor">
+                    Recency Factor: <span>{{chunk.recency_factor}}</span>
+                </li>
+                <li *ngIf="testingUI && chunk.recency_search_score">
+                    Recency Score: <span>{{chunk.recency_search_score}}%</span>
+                </li>
+                <li *ngIf="chunk.score">
+                    Search Score: <span>{{chunk.score}}%</span>
+                </li>
+                <li *ngIf="chunk.publication_date">
+                    Publication Date: <span>{{chunk.publication_date}}</span>
+                </li>
+                <li *ngIf="testingUI && chunk.doc_page_number">
+                    Page No: <span>{{chunk.doc_page_number}}</span>
+                </li>
+                <li *ngIf="testingUI && chunk.chunk_token_len">
+                    Chunk Token Length: <span>{{chunk.chunk_token_len}}</span>
+                </li>
+                <li *ngIf="testingUI && chunk.defined_chunk_size">
+                    Chunk Size: <span>{{chunk.defined_chunk_size}}</span>
+                </li>
+                <li *ngIf="testingUI && chunk.chunk_id">
+                    Chunk ID: <span>{{chunk.chunk_id}}</span>
+                </li> -->
+                <li *ngIf="content?.content_id">
+                    Content ID: <span>{{content.content_id}}</span>
+                </li>
+                <li *ngIf="content?.content_doc_pages">
+                    Relevant Pages:
+                    <span *ngFor="let page of content?.content_doc_pages; let last = last">
+                        {{ page }}{{ !last ? ',' : '' }}
+                    </span>
+                </li>
+                <li *ngIf="content?.doc_details?.publication_date">
+                    Publication Date: <span>{{ date }}</span>
+                </li>
+                <li *ngIf="content?.doc_details?.company_name">
+                    Company Name: <span>{{content.doc_details.company_name}}</span>
+                </li>
+                <li *ngIf="content?.doc_details?.industry_name">
+                    Industry: <span>{{content.doc_details.industry_name}}</span>
+                </li>
+                <!-- <li *ngIf="content?.doc_tags">
+                    Document Tags:
+                    <span *ngFor="let page of content?.doc_tags; let last = last">
+                        {{ page }}{{ !last ? ',' : '' }}
+                    </span>
+                </li> -->
+            </ul>
+            <hr class="my-2" style="border-bottom: 1px solid #8a8787; border-top: none;" >
+
+        </div>
+    </ng-container>
+</div>
